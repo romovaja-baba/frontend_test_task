@@ -1,10 +1,14 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { changeUser } from "../../redux/store"
 
-const UserEditInfo = ({ user, submitUser }) => {
+const UserEditInfo = ({ user }) => {
     const [firstName, setFirstName] = useState(user.firstName)
     const [lastName, setLastName] = useState(user.lastName)
     const [age, setAge] = useState(user.age)
     const [email, setEmail] = useState(user.email)
+
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -12,9 +16,9 @@ const UserEditInfo = ({ user, submitUser }) => {
         let submittedUser = {
             id: user.id, firstName: firstName, lastName: lastName, age: age, email: email
         }
-
-        submitUser(submittedUser)
+        dispatch(changeUser(submittedUser))
     }
+
     return (
         <form className="profile-edit-container" onSubmit={handleSubmit}>
             <div className="profile--content--info">

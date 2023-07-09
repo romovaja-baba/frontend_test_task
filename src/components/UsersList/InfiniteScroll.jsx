@@ -24,7 +24,6 @@ const InfiniteScroll = ({ loader, onReceiveItems, hasMore, children }) => {
 
     useEffect(() => {
         if (!initCall) setInitialData()
-
         if (hasMore) intersectionObserver.observe(element.current)
 
         return () => {

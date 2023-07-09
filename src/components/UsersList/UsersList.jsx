@@ -1,11 +1,12 @@
 import { useState } from "react"
-import User from "./User"
-import "../../css/UsersList.css"
-import InfiniteScroll from "./InfiniteScroll"
 import { useDispatch, useSelector } from "react-redux"
+import User from "./User"
+import InfiniteScroll from "./InfiniteScroll"
 import { addUsers } from "../../redux/store"
 
-const UsersList = ({ onUserClick }) => {
+import "../../css/UsersList.css"
+
+const UsersList = () => {
     const [hasMore, setHasMore] = useState(true)
 
     const users = useSelector(state => state.users)
@@ -13,10 +14,7 @@ const UsersList = ({ onUserClick }) => {
 
     const onReceiveItems = (receivedUsers, page) => {
         dispatch(addUsers(receivedUsers))
-
-        if (page >= 5) {
-            setHasMore(false)
-        }
+        if (page >= 50000) setHasMore(false)
     }
 
     return (
@@ -26,9 +24,9 @@ const UsersList = ({ onUserClick }) => {
                 onReceiveItems={onReceiveItems}
                 hasMore={hasMore}
             >
-                { users.map(user => <User key={user.id} user={user} onUserClick={onUserClick}/>) }
+                {users.map(user => <User key={user.id} user={user} />)}
             </InfiniteScroll>
-        </div >
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 export const generateUsers = () => {
-    let temp = [];
+    let createdUsersArray = [];
 
     for (let i = 0; i < 20; i++) {
         let obj = {
@@ -11,8 +11,8 @@ export const generateUsers = () => {
             age: faker.number.int({ min: 18, max: 60 }),
             email: faker.internet.email(),
         };
-        temp.push(obj)
+        createdUsersArray.push(obj)
     }
 
-    return temp
+    return createdUsersArray
 };

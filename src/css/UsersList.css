@@ -37,4 +37,8 @@
 
 .list-container::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-  }
+}
+
+.user--selected {
+    background-color: #96d4fd;
+}
