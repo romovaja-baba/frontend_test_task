@@ -23,13 +23,15 @@ const InfiniteScroll = ({ loader, onReceiveItems, hasMore, children }) => {
     })
 
     useEffect(() => {
+        const changableElement = element.current
+
         if (!initCall) setInitialData()
-        if (hasMore) intersectionObserver.observe(element.current)
+        if (hasMore) intersectionObserver.observe(changableElement)
 
         return () => {
-            element.current && intersectionObserver.unobserve(element.current)
+            changableElement && intersectionObserver.unobserve(changableElement)
         }
-    }, [page])
+    }, [page, initCall, hasMore])
 
     return (
         <>
