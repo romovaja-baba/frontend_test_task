@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import "../../css/UserProfile.css"
 import UserEditInfo from "./UserEditInfo"
 
